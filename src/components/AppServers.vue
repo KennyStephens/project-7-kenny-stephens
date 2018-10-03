@@ -6,9 +6,11 @@
                 v-for="server in serverList" :key="server.name">
                 <v-icon color="amber accent-2" class="mr-1">computer</v-icon>
                 {{ server.name }} - Status: {{ server.status }}
+                <v-btn @click="changeStatus" small>Change Status</v-btn>
             </v-list-tile>
+            <v-btn @click="changeStatus" small>Change Status</v-btn>
         </v-list>
-        <button @click="doAlert">doAlert</button>
+        
     </div>
 </template>
 
@@ -28,7 +30,10 @@
             }
         },
         methods: {
-            doAlert() {
+            statusChange() {
+
+            },
+            changeStatus() {
                 eventBus.$emit('alerted', 'hello');
             }
         }

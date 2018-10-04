@@ -28,8 +28,8 @@
             }
         },
         methods: {      
-            statusChange(i, incStatus) {
-                return (incStatus === "ACTIVE" ? this.serverList[i].status ="INACTIVE" : this.serverList[i].status ="ACTIVE");                
+            statusChange(i, newStatus) {
+                return (newStatus === "ACTIVE" ? this.serverList[i].status ="INACTIVE" : this.serverList[i].status ="ACTIVE");                
             },
             updateServers() {
                 eventBus.$emit('updated', 'Server Details are currently updated.');

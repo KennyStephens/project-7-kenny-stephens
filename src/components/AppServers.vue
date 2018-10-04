@@ -4,8 +4,8 @@
             <v-list-tile
                 v-for="(server, i) in serverList" :key="i">
                 <v-icon color="amber accent-2" class="mr-2">computer</v-icon>
-                {{ server }} - Status: {{ status }}
-                <v-btn @click="statusChange" small>Change Status</v-btn>
+                {{ server.Name }} - Status: {{ server.status }}
+                <v-btn @click="statusChange(i)" small>Change Status</v-btn>
             </v-list-tile>
                 <v-btn @click="updateServers" small light>Update Servers</v-btn>
         </v-list>
@@ -18,13 +18,18 @@
     export default {
         data() {
             return {
-                serverList: ['Server #1', 'Server #2', 'Server #3','Server #4', 'Server #5'],
-                status: true
+                serverList: [
+				{ Name: "Server #1", status: true },
+				{ Name: "Server #2", status: false },
+				{ Name: "Server #3", status: true },
+				{ Name: "Server #4", status: false },
+				{ Name: "Server #5", status: true }
+                ]
             }
         },
         methods: {
-            statusChange() {
-                
+            statusChange(i) {
+                this.serverList[i].status = !this.serverList[i].status;
             },
             updateServers() {
                 eventBus.$emit('updated', 'Server Details are currently updated.');

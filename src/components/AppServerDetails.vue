@@ -14,13 +14,6 @@
                 serverStatus: 'Server Details are currently not updated.'
             }
         },
-        methods: {
-            statusWatch() {
-                if(this.serverStatus === 'Server Details are currently not updated.') {
-                    alert('hello');
-                }
-            }
-        },
         created() {
             eventBus.$on('updated', (data) => {
                 this.serverStatus = data;

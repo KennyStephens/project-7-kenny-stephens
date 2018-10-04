@@ -5,7 +5,7 @@
                 v-for="(server, i) in serverList" :key="i">
                 <v-icon color="amber accent-2" class="mr-2">computer</v-icon>
                 {{ server.Name }} - Status: {{ server.status }}
-                <v-btn @click="statusChange(i)" small>Change Status</v-btn>
+                <v-btn @click="statusChange(i, server.status)" small>Change Status</v-btn>
             </v-list-tile>
                 <v-btn @click="updateServers" small light>Update Servers</v-btn>
         </v-list>
@@ -19,17 +19,22 @@
         data() {
             return {
                 serverList: [
-				{ Name: "Server #1", status: true },
-				{ Name: "Server #2", status: false },
-				{ Name: "Server #3", status: true },
-				{ Name: "Server #4", status: false },
-				{ Name: "Server #5", status: true }
+				{ Name: "Server #1", status: "active" },
+				{ Name: "Server #2", status: "inactive" },
+				{ Name: "Server #3", status: "active" },
+				{ Name: "Server #4", status: "inactive" },
+				{ Name: "Server #5", status: "active" }
                 ]
             }
         },
         methods: {
-            statusChange(i) {
-                this.serverList[i].status = !this.serverList[i].status;
+            statusChange(i, incStatus) {
+                if (incStatus === "active"){
+                    this.serverList[i].status ="inactive";
+                } else {
+                    this.serverList[i].status ="active";
+                }
+                
             },
             updateServers() {
                 eventBus.$emit('updated', 'Server Details are currently updated.');

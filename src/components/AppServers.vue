@@ -19,20 +19,20 @@
         data() {
             return {
                 serverList: [
-				{ Name: "Server #1", status: "active" },
-				{ Name: "Server #2", status: "inactive" },
-				{ Name: "Server #3", status: "active" },
-				{ Name: "Server #4", status: "inactive" },
-				{ Name: "Server #5", status: "active" }
+				{ Name: "Server #1", status: "ACTIVE" },
+				{ Name: "Server #2", status: "INACTIVE" },
+				{ Name: "Server #3", status: "ACTIVE" },
+				{ Name: "Server #4", status: "INACTIVE" },
+				{ Name: "Server #5", status: "ACTIVE" }
                 ]
             }
         },
         methods: {
-            statusChange(i, incStatus) {
-                if (incStatus === "active"){
-                    this.serverList[i].status ="inactive";
+            statusChange(i, newStatus) {
+                if (newStatus === "ACTIVE"){
+                    this.serverList[i].status ="INACTIVE";
                 } else {
-                    this.serverList[i].status ="active";
+                    this.serverList[i].status ="ACTIVE";
                 }
                 
             },

@@ -27,19 +27,9 @@
                 ]
             }
         },
-        methods: {
-<<<<<<< HEAD
-            statusChange(i, newStatus) {
-                if (newStatus === "ACTIVE"){
-                    this.serverList[i].status ="INACTIVE";
-                } else {
-                    this.serverList[i].status ="ACTIVE";
-                }
-                
-=======
+        methods: {      
             statusChange(i, incStatus) {
                 return (incStatus === "ACTIVE" ? this.serverList[i].status ="INACTIVE" : this.serverList[i].status ="ACTIVE");                
->>>>>>> 5e30dbaaa69efa6c0fab5fda32e7b0cd34fc1704
             },
             updateServers() {
                 eventBus.$emit('updated', 'Server Details are currently updated.');

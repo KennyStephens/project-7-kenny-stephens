@@ -1,7 +1,7 @@
 <template>
     <div class="pa-3">
-        <p>Server Details are currently not updated</p>
-        <p>{{ test }}</p>
+        <h3>Updated Server Detail</h3>
+        <p>{{ serverStatus }}</p>
     </div>
 </template>
 
@@ -11,13 +11,26 @@
     export default {
         data() {
             return {
-                test: 'whats up'
+                serverStatus: 'Server Details are currently not updated.'
+            }
+        },
+        methods: {
+            statusWatch() {
+                if(this.serverStatus === 'Server Details are currently not updated.') {
+                    alert('hello');
+                }
             }
         },
         created() {
-            eventBus.$on('alerted', (data) => {
-                this.test = data;
+            eventBus.$on('updated', (data) => {
+                this.serverStatus = data;
             });
         }
     }
 </script>
+
+<style scoped>
+    h3 {
+        text-decoration: underline;
+    }
+</style>
